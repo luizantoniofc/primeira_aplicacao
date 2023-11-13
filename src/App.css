@@ -5,13 +5,16 @@
   text-align: center;
   background: #f8f8f8;
   transition: all 0.1s ease-in-out;
+  cursor: pointer;
 }
 .card:hover{
   box-shadow: 0.25rem 0.25rem black;
   translate: -0.25rem -0.25rem;
 }
+
 .card > h2 {
   font-family: Inter, Verdana, Geneva, Tahoma, sans-serif;
+  border-left: 0.5rem solid #97d7d7;
 }
 .card > img {
   border-radius: 1rem;
