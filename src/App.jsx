@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -20,13 +20,37 @@ function App() {
     imageUrl: "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
     tags: ["Status: Vivo", "Espécie Humana", "Origem: Terra 661"]
     }
-  const items = [item1, item2, item3, item1, item2, item3]
+  //const items = [item1, item2, item3, item1, item2, item3]
+  const[items, setItems] = useState([])
+
+
+
+
+
+  async function carregarDadosApi() {
+    const apiUrl = "https://rickandmortyapi.com/api/character/"
+    
+    const response = await fetch(apiUrl)
+
+    const body = await response.json()
+    console.log(body);
+
+    setItems(body.results)
+  }
+
+  useEffect(function() {
+    carregarDadosApi()
+  }, [])
+  
+  
 
   return (
     <>
-      {items.map(function(element){
-        return <Card item={element} />
-      })}      
+      <div className="cards">
+        {items.map(function(element){
+          return <Card item={element} />
+        })}    
+      </div>  
     </>
   )
 }
