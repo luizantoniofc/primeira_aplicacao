@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
-import Card from './components/Card/Card';
+import Card from '../Card/Card';
 
-function App() {
+export default function Home() {
   const[items, setItems] = useState([])
 
   async function carregarDadosApi() {
@@ -35,8 +34,6 @@ function App() {
     carregarDadosApi()
   }, [])
   
-  
-
   return (
     <>
       <div className="cards">
@@ -48,4 +45,3 @@ function App() {
   )
 }
 
-export default App
