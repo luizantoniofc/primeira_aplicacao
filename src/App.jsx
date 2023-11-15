@@ -33,9 +33,22 @@ function App() {
     const response = await fetch(apiUrl)
 
     const body = await response.json()
-    console.log(body);
 
-    setItems(body.results)
+    const results = body.results.map(function (element) {
+      return {
+        name: element.name,
+        image: element.image,
+        tags: [
+          `Status: ${element.status}`,
+          `Species: ${element.species}`,
+          `Origin: ${element.origin.name}`,
+          `Episodes: ${element.episode.length}`
+        ]
+      }
+    })
+
+    
+    setItems(results)
   }
 
   useEffect(function() {
